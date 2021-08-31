@@ -174,7 +174,7 @@ jobs:
           command: |
               npm i
               npm audit fix --audit-level=critical --force 
-
+              
   scan-backend:
     docker:
       - image: circleci/node:13.8.0
@@ -191,8 +191,7 @@ jobs:
 
 
   deploy-infrastructure:
-    docker:
-      - image: amazon/aws-cli
+    executor: aws
     steps:
       - checkout
       - run:
